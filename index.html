@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tectonic Travel Guide</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #023047 0%, #219ebc 100%);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    header:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.7;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    header p {
+      margin-top: 10px;
+      font-size: 1.4em;
+      color: #bde0fe;
+      position: relative;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+    .section, .destination {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .section:hover, .destination:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .section h2, .destination h2 {
+      color: #023047;
+      margin-top: 0;
+      font-size: 2.2em;
+      border-bottom: 2px solid #8ecae6;
+      padding-bottom: 10px;
+      position: relative;
+    }
+    .section h2:after, .destination h2:after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100px;
+      height: 2px;
+      background-color: #023047;
+    }
+    .section p, .section ul, .destination p {
+      line-height: 1.7;
+      color: #444;
+      font-size: 1.05em;
+    }
+    .section img, .destination img {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin: 25px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .section img:hover, .destination img:hover {
+      transform: scale(1.02);
+    }
+    .subsection {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 25px;
+      margin-top: 30px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      border-left: 4px solid #8ecae6;
+    }
+    .subsection h3 {
+      color: #023047;
+      margin-top: 0;
+      font-size: 1.6em;
+    }
+    .destination {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .destination .text {
+      flex: 1 1 60%;
+    }
+    .destination .image {
+      flex: 1 1 35%;
+    }
+    .destination .image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .tagline {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 15px;
+      font-size: 1.1em;
+      border-left: 3px solid #8ecae6;
+      padding-left: 10px;
+    }
+    .tooltip {
+      position: fixed;
+      background-color: #023047;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 0.95em;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    strong {
+      color: #023047;
+    }
+    .key-term {
+      color: #023047;
+      font-weight: bold;
+      border-bottom: 1px dotted #8ecae6;
+      cursor: help;
+    }
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .destination {
+        flex-direction: column;
+      }
+      .destination .text, .destination .image {
+        flex: 1 1 100%;
+      }
+      header h1 {
+        font-size: 2em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>World Of Wonders: Free Travel Guide</h1>
+  <p>TectonicTravel</p>
+</header>
+
+<div class="section">
+  <h2>Tectonic Plate Boundaries</h2>
+  <p>The Earth's outermot layer, the <span class="key-term" title="The outer part of earth, made of crust and upper mantle.">lithosphere</span>, is made of of the crust and solid mantle. The crust varies between <span class="key-term" title=" thinner crust found beneath oceans, made of basalt">oceanic crust</span> and <span class="key-term" title="A thicker crust made of granitic/felsic rocks ">continental crust</span>.</p>
+  <img src="plates.jpg" alt="Diagram of Earth's tectonic plates">
+
+  <div class="subsection">
+    <h3>Convergent Boundaries</h3>
+    <p><strong>Definition:</strong> Plates push into each other. One may go upward to form mountains, or one may get pushed under the other.</p>
+    <p><strong>Tectonic Processes:</strong> One plate gets pushed under the other (<span class="key-term" title="When one tectonic plate moves under another and sinks.">subduction</span>), or they both break and crak.</p>
+    <p><strong>Geographical Features:</strong> trenches, mountains, volcaoes</p>
+    <img src="Convergent.jpeg" alt="Convergent boundary diagram">
+  </div>
+
+  <div class="subsection">
+    <h3>Plate Tectonic Theory</h3>
+    <p><strong>Definition:</strong> The Earth's lithosphere is broken into large and small plates. These plates move on the more ductile <span class="key-term" title="The mechanically weak, ductile layer of the Earth beneath the lithosphere">asthenosphere</span> through processes including mantle convection. The movement of these plates explains many geological features we observe on Earth.</p>
+  </div>
+
+  <div class="subsection">
+    <h3>Divergent Boundaries</h3>
+    <p><strong>Definition:</strong> Plates move away from each other.</p>
+    <p><strong>Tectonic Processes:</strong> Magma rises up and forms new crust as plates leave each other.</p>
+    <p><strong>Geographical Features:</strong> Mid-ocean ridges, rift valleys, volcanic activity.</p>
+    <img src="Divergent.png" alt="Divergent boundary diagram">
+  </div>
+
+  <div class="subsection">
+    <h3>Transform Boundaries</h3>
+    <p><strong>Definition:</strong> Plates slide past each other horizontally.</p>
+    <p><strong>Tectonic Processes:</strong> Friction builds up until it suddenly releases causing earthquakes.</p>
+    <p><strong>Geographical Features:</strong> Fault lines and cracks. No volcanoes form at these boundaies because there's no sinking or magma rising</p>
+    <img src="Transform.png" alt="Transform boundary diagram">
+  </div>
+</div>
+
+<div class="destination" data-tooltip="Mountains formed by two continental plates colliding!">
+  <div class="text">
+    <h2>Himalayas – Indian & Eurasian Plates</h2>
+    <p class="tagline">Boundary: Convergent | Subtype: Continental–Continental</p>
+    <p>The Indian Plate is crashing into the Eurasian Plate, but becaus both are a similar weight , they dont really move and one doesnt go under the other. instead, the land gets pushed up and forms mountains </p>
+    <p><strong>Hazards:</strong> There are lots of earthquakes and landslides here, but no volcanoes, because no magma is being made under the ground.</p>
+  </div>
+  <div class="image">
+    <img src="himalayas.jpg" alt="Himalayas">
+  </div>
+</div>
+
+<div class="destination" data-tooltip="Volcanoes and quakes from an oceanic plate diving under a continental plate.">
+  <div class="text">
+    <h2>Andes – South America</h2>
+    <p class="tagline">Boundary: Convergent | Subtype: Oceanic–Continental</p>
+    <p>The Nazca Plate, which is under the ocean, is sliding underneath the South American Plate. As it sinks, it lets out water, which helps melt the rock. This magma rises up and makes volcanoes.</p>
+    <p><strong>Hazards:</strong> Big earthquakes, tsunanis, and volcanos can erupt.</p>
+  </div>
+  <div class="image">
+    <img src="andes.jpg" alt="Andes Mountains">
+  </div>
+</div>
+
+<div class="destination" data-tooltip="Island arcs and deep sea trenches from oceanic plate subduction.">
+  <div class="text">
+    <h2>Japan – Western Pacific</h2>
+    <p class="tagline">Boundary: Convergent | Subtype: Oceanic–Oceanic</p>
+    <p>The Pacific Plate is sinking under the Okhotsk Plate (which is part of the North American Plate). This creates a chain of volcanic islands, which includes Japan.</p>
+    <p><strong>Hazards:</strong> Earthquakes under the ocean, tsunamis, and volcanos can also erupt</p>
+  </div>
+  <div class="image">
+    <img src="japan.jpg" alt="Japan volcanoes">
+  </div>
+</div>
+
+<div class="destination" data-tooltip="The world's deepest trench formed by oceanic-oceanic subduction.">
+  <div class="text">
+    <h2>Mariana Trench:  Western Pacific</h2>
+    <p class="tagline">Boundary: Convergent | Subtype: Oceanic Oceanic</p>
+    <p>The Pacific Plate is sliding underneath the smaller Philippine Sea Plate. This has created the Mariana Trench, the deepest place in the ocean almost 11,000 meters (36,000 feet) deep.</p>
+    <p><strong>Hazards:</strong> underwater earthquakes and tsunamis.</p>
+  </div>
+  <div class="image">
+    <img src="mariana.jpg" alt="Mariana Trench illustration">
+  </div>
+</div>
+
+<div class="destination" data-tooltip="Continental crust pulling apart to eventually form a new ocean basin.">
+  <div class="text">
+    <h2>East African Rift</h2>
+    <p class="tagline">Boundary: Divergent | Subtype: Continental–Continental</p>
+    <p>The African continent is slowly splitting apart along a crack that’s about 3,700 km (2,300 miles) long. As the land moves away from itself, magma comes up from below and forms volcanoes. In 10 to 50 million years, this area might turn into a new ocean.</p>
+    <p><strong>Hazards:</strong> Earthquakes, volcanic eruptions, and the ground sinking in some places.</p>
+  </div>
+  <div class="image">
+    <img src="african-rift.jpg" alt="East African Rift">
+  </div>
+</div>
+
+<div class="destination" data-tooltip="A country born from the divergence of two oceanic plates.">
+  <div class="text">
+    <h2>Iceland – Mid Atlantic Ridge</h2>
+    <p class="tagline">Boundary: Divergent | Subtype: Oceanic–Oceanic</p>
+    <p>Iceland is right on top of the Mid Atlantic Ridge, where the North American and Eurasian plates are slowly moving away from each other. This means the country is being pulled apart. One side is moving toward North America, and the other toward Europe!</p>
+    <p><strong>Hazards:</strong> Volcanic eruptions, hot springs and geysers, and cracks forming in the land.</p>
+  </div>
+  <div class="image">
+    <img src="iceland.jpg" alt="Iceland volcanic landscape">
+  </div>
+</div>
+
+<div class="destination" data-tooltip="Underwater mountain ranges forming along spreading centers.">
+  <div class="text">
+    <h2>Mid Atlantic Ridge & East Pacific Rise</h2>
+    <p class="tagline">Boundary: Divergent | Subtype: Oceanic–Oceanic</p>
+    <p>These are long mountain ranges at the bottom of the ocean where plates are slowly moving apart. Magma comes up from below and cools to form new ocean floor. At the Mid-Atlantic Ridge, this happens at about 1.5 cm per year on each side.</p>
+    <p><strong>Hazards:</strong> Small underwater earthquakes, hot vents on the ocean floor, and lava flows under the sea.</p>
+  </div>
+  <div class="image">
+    <img src="ridge.jpg" alt="Mid-Atlantic Ridge">
+  </div>
+</div>
+
+<div class="destination" data-tooltip="Plates sliding sideways = BIG earthquakes but no volcanoes.">
+  <div class="text">
+    <h2>San Andreas Fault:  California</h2>
+    <p class="tagline">Boundary: Transform</p>
+    <p>The Pacific Plate and North American Plate slide past each other at the San Andreas Fault. When parts of the plates get stuck and then suddenly move, it causes strong earthquakes.</p>
+    <p><strong>Hazards:</strong> Big earthquakes and cracks in the ground. No volcanoes here because the plates aren’t pushing down or pulling apart.</p>
+  </div>
+  <div class="image">
+    <img src="sanandreas.jpg" alt="San Andreas Fault">
+  </div>
+</div>
+
+<!-- Tooltip element -->
+<div id="tooltip" class="tooltip"></div>
+
+<script>
+  // Tooltip functionality
+  const tooltip = document.getElementById('tooltip');
+  const destinations = document.querySelectorAll('.destination');
+
+  destinations.forEach(dest => {
+    const text = dest.getAttribute('data-tooltip');
+    
+    dest.addEventListener('mousemove', (e) => {
+      tooltip.textContent = text;
+      tooltip.style.top = (e.clientY + 20) + 'px';
+      tooltip.style.left = (e.clientX + 20) + 'px';
+      tooltip.style.opacity = '1';
+    });
+
+    dest.addEventListener('mouseleave', () => {
+      tooltip.style.opacity = '0';
+    });
+  });
+
+  // Term definitions
+  const keyTerms = document.querySelectorAll('.key-term');
+  
+  keyTerms.forEach(term => {
+    const definition = term.getAttribute('title');
+    
+    term.addEventListener('mousemove', (e) => {
+      tooltip.textContent = definition;
+      tooltip.style.top = (e.clientY + 20) + 'px';
+      tooltip.style.left = (e.clientX + 20) + 'px';
+      tooltip.style.opacity = '1';
+    });
+
+    term.addEventListener('mouseleave', () => {
+      tooltip.style.opacity = '0';
+    });
+  });
+</script>
+
+</body>
+</html>
